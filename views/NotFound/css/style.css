@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../img/background.webp");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.wrapper {
+  box-sizing: border-box;
+  padding: 60px;
+  border-radius: 20px;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 30px grey;
+}
+
+.wrapper .wrapper__heading{
+  font-family: Montserrat;
+  font-weight: 600;
+  color: #333;
+  font-size: 46px;
+  text-align: center;
+}
+
+.wrapper .wrapper__code{
+  display: block;
+  font-family: Montserrat;
+  color: black;
+  font-size: 72px;
+  text-align: center;
+  margin-top: 20px;
+}
