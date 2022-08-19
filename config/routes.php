@@ -1,6 +1,8 @@
 <?php
 
 return Array(
+  '#^/admin/product/delete_product.{0,1}$#!' => 'AdminController.delete_product',
+  '#^/admin/product/create_product.{0,1}$#!' => 'AdminController.create_product',
   '#^/admin/product/delete_image.{0,1}$#!' => 'AdminController.delete_image',
   '#^/admin/product/create_image.{0,1}$#!' => 'AdminController.create_image',
   '#^/admin/product/change.{0,1}$#!' => 'AdminController.product_change',

@@ -116,4 +116,19 @@ class AdminController extends Controller {
     return;
   }
 
+  public function create_product($url, $request, $session, $files) {
+    $product = Product::create_product();
+    echo json_encode($product);
+  }
+
+  public function delete_product($url, $request, $session, $files) {
+    if(!isset($request['id'])){
+      echo "error";
+      return;
+    }
+    $id = $request['id'];
+    Product::delete_product($id);
+    echo "ok";
+  }
+
 }

@@ -157,4 +157,33 @@ class Product {
     return "ok";
   }
 
+  public static function create_product($name = "Товар", $description = "Описание товара", $buy_price = 300, $sell_price = 500, $in_stock = 5) {
+    try{
+      $db = new DataBase();
+      $id = $db->query("INSERT INTO products (`product_name`, `product_description`, `buy_price`, `sell_price`, `in_stock`) VALUES (:name, :description, :buy_price, :sell_price, :in_stock)", Array(
+        ":name" => $name,
+        ":description" => $description,
+        ":buy_price" => $buy_price,
+        ":sell_price" => $sell_price,
+        ":in_stock" => $in_stock
+      ));
+    } catch(Exception $e) {
+      return "error";
+    }
+    $id = $db->query("SELECT last_insert_rowid()", Array())[0]['last_insert_rowid()'];
+    return self::get_product($id);
+  }
+
+  public static function delete_product($id) {
+    try{
+      $db = new DataBase();
+      $callback = $db->query("DELETE FROM products WHERE `id` = :id", Array(
+        ':id' => $id
+      ));
+    } catch(Exception $e) {
+      return "error";
+    }
+    return "ok";
+  }
+
 }

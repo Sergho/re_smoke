@@ -215,3 +215,40 @@ function SendImage(elem) {
     }
   });
 }
+
+function AddProduct() {
+  $.ajax({
+    method: "POST",
+    url: "/admin/product/create_product",
+    success: (callback) => {
+      if(callback == "error") return;
+      callback = JSON.parse(callback);
+      const items = document.querySelectorAll(".product");
+      const item = items[items.length - 1];
+      let new_item = item.cloneNode(true);
+      item.parentNode.append(new_item);
+
+      const name = new_item.querySelector('.product__title');
+      const count = new_item.querySelector('.product__count');
+      name.innerHTML = callback['product_name'] + '[' + callback['id'] + ']';
+      count.innerHTML = callback['in_stock'];
+    }
+  });
+}
+
+function DeleteProduct(elem){
+  const id = elem.parentNode.parentNode.querySelector(".modal-product__id").innerHTML.split("[")[1].split("]")[0];
+  const data = {
+    id: id
+  }
+  $.ajax({
+    data: data,
+    method: "POST",
+    url: "/admin/product/delete_product",
+    success: (callback) => {
+      if(callback == "error") return;
+      const item = FindProductDOM(id);
+      item.remove();
+    }
+  });
+}

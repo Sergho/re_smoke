@@ -26,6 +26,13 @@
           </li>
         <?php endforeach; ?>
       </ul>
+      <div class="content__item add-product" onclick="AddProduct();">
+        <div class="add-product__title">Добавить товар</div>
+        <div class="add-product__widget">
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </div>
   </div>
   <div class="modal" style="display: none; opacity: 0;">
@@ -70,6 +77,9 @@
               <span></span>
               <span></span>
             </span>
+          </div>
+          <div class="modal-product__delete">
+            <button onclick="DeleteProduct(this); HideModal();">Удалить</button>
           </div>
         </div>
       </div>
